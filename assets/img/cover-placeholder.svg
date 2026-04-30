@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#253139"/>
+      <stop offset="0.58" stop-color="#6f6a55"/>
+      <stop offset="1" stop-color="#1a140e"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.32" cy="0.22" r="0.38">
+      <stop offset="0" stop-color="#e8ba74" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#e8ba74" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.12"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <rect width="1600" height="1000" fill="url(#sun)"/>
+  <path d="M0 610 C240 510 350 580 530 505 C760 410 820 505 1000 430 C1220 338 1360 430 1600 355 L1600 1000 L0 1000 Z" fill="#342719"/>
+  <path d="M0 705 C210 650 355 695 520 640 C760 560 930 650 1130 565 C1320 485 1450 560 1600 520 L1600 1000 L0 1000 Z" fill="#201811"/>
+  <path d="M260 675 c110 -40 205 -40 320 0 c-92 8 -200 9 -320 0z" fill="#100d0a" opacity="0.65"/>
+  <g fill="#0d0a07">
+    <path d="M480 642 l22 -92 l18 92z"/>
+    <circle cx="502" cy="535" r="16"/>
+    <path d="M532 642 l18 -74 l16 74z"/>
+    <circle cx="550" cy="555" r="13"/>
+    <path d="M590 642 l18 -68 l15 68z"/>
+    <circle cx="608" cy="560" r="12"/>
+    <path d="M690 642 l24 -98 l16 98z"/>
+    <circle cx="715" cy="530" r="16"/>
+  </g>
+  <g stroke="#0d0a07" stroke-width="8" stroke-linecap="round" opacity="0.9">
+    <path d="M385 610 L470 580"/>
+    <path d="M760 575 L850 548"/>
+    <path d="M640 590 L710 548"/>
+  </g>
+  <g transform="translate(1010 530)" fill="#0d0a07" opacity="0.9">
+    <ellipse cx="0" cy="45" rx="86" ry="36"/>
+    <circle cx="84" cy="28" r="24"/>
+    <path d="M96 12 C116 -5 128 -20 134 -42" stroke="#0d0a07" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path d="M82 10 C62 -8 54 -24 52 -48" stroke="#0d0a07" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <rect x="-48" y="70" width="12" height="62" rx="5"/>
+    <rect x="-3" y="70" width="12" height="62" rx="5"/>
+    <rect x="42" y="66" width="12" height="55" rx="5"/>
+  </g>
+  <text x="80" y="115" fill="#f4ead9" font-family="Georgia, serif" font-size="72" font-weight="700" letter-spacing="-3">ETTER ISEN</text>
+  <text x="85" y="170" fill="#d8c8ad" font-family="Georgia, serif" font-size="30">Bytt denne filen med assets/img/cover.jpg</text>
+  <rect width="1600" height="1000" filter="url(#grain)" opacity="0.55"/>
+</svg>

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "reindeer_moraine",
+    "name": "Reinflokken ved moreneryggen",
+    "description": "Første testscenario: fire jegere, tre til fire rein, vindskive, terreng og enkel høsting.",
+    "defaultResources": { "kjott": 4, "skinn": 1, "sener": 1, "bein": 1, "gevir": 1, "fett": 1 },
+    "successHint": "Fell minst én rein og få kjøtt tilbake til stammen."
+  },
+  {
+    "id": "thin_tracks",
+    "name": "Tynne spor ved elvekanten",
+    "description": "En kortere jakt med høy usikkerhet. Passer når stammen har lite mat og må ta sjanser.",
+    "defaultResources": { "kjott": 2, "skinn": 0, "sener": 0, "bein": 1, "gevir": 0, "fett": 1 },
+    "successHint": "Finn bytte før dagslyset forsvinner."
+  },
+  {
+    "id": "wind_turns",
+    "name": "Da vinden snudde",
+    "description": "Scenario for å teste lukt, vind og dyrenes alarmtilstand.",
+    "defaultResources": { "kjott": 3, "skinn": 1, "sener": 1, "bein": 1, "gevir": 0, "fett": 1 },
+    "successHint": "Unngå at flokken får ferten av jegerne."
+  }
+]

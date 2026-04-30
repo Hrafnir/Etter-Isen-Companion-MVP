@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#3a2b1d"/>
+      <stop offset="1" stop-color="#110d09"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <circle cx="300" cy="245" r="98" fill="#71533a"/>
+  <path d="M150 710 C170 510 230 420 300 420 C370 420 430 510 450 710 Z" fill="#2b2117"/>
+  <path d="M170 380 C240 330 360 330 430 380" stroke="#d08b43" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <text x="300" y="95" text-anchor="middle" fill="#f4ead9" font-family="Georgia, serif" font-size="40" font-weight="700">PORTRETT</text>
+  <text x="300" y="755" text-anchor="middle" fill="#cdbd9e" font-family="Georgia, serif" font-size="22">legg bilde i assets/portraits/</text>
+</svg>

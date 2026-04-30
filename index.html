@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Etter Isen Companion MVP</title>
+  <meta name="description" content="Companion app MVP for Etter Isen: stamme, jegere, jaktlogg, ressurser, milepæler og hendelser." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="appShell">
+    <header class="hero">
+      <div class="hero__imageWrap">
+        <img class="hero__image" src="assets/img/cover.jpg" alt="Stemningsbilde for Etter Isen" onerror="this.onerror=null; this.src='assets/img/cover-placeholder.svg';" />
+      </div>
+      <div class="hero__content">
+        <p class="eyebrow">Companion app MVP</p>
+        <h1>Etter Isen</h1>
+        <p class="subtitle">Stammens hukommelse etter jakten: jegere, ressurser, tap, milepæler og små fortellinger rundt bålet.</p>
+        <div class="hero__actions">
+          <button class="primary" data-view="hunt">Registrer jakt</button>
+          <button data-view="hunters">Lag jeger</button>
+          <button data-view="backup">Eksporter lagring</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tabs" aria-label="Hovednavigasjon">
+      <button class="tab is-active" data-view="overview">Oversikt</button>
+      <button class="tab" data-view="hunters">Jegere</button>
+      <button class="tab" data-view="hunt">Jaktresultat</button>
+      <button class="tab" data-view="resources">Ressurser</button>
+      <button class="tab" data-view="milestones">Milepæler</button>
+      <button class="tab" data-view="log">Fortellinger</button>
+      <button class="tab" data-view="backup">Data</button>
+    </nav>
+
+    <main>
+      <section id="view-overview" class="view is-active" aria-labelledby="overviewTitle">
+        <div class="sectionHeader">
+          <div>
+            <p class="eyebrow">Leirstatus</p>
+            <h2 id="overviewTitle">Stammen ved ildstedet</h2>
+          </div>
+          <button id="renameTribeBtn">Endre stammenavn</button>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Stammeprofil</h3>
+            <div id="tribeStats" class="statBars"></div>
+          </article>
+          <article class="card">
+            <h3>Ressurslager</h3>
+            <div id="resourceSummary" class="resourceGrid"></div>
+          </article>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Neste jakt: varsel fra appen</h3>
+            <div id="nextHuntAdvice" class="callout"></div>
+          </article>
+          <article class="card">
+            <h3>Siste hendelse</h3>
+            <div id="latestStory" class="storyExcerpt"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="view-hunters" class="view" aria-labelledby="huntersTitle">
+        <div class="sectionHeader">
+          <div>
+            <p class="eyebrow">Jegerbygger</p>
+            <h2 id="huntersTitle">Lag og forvalt jegere</h2>
+          </div>
+          <button id="addSampleHuntersBtn">Legg inn fire testjegere</button>
+        </div>
+
+        <div class="grid two uneven">
+          <article class="card">
+            <h3>Ny jeger</h3>
+            <form id="hunterForm" class="formStack">
+              <label>Navn på jeger
+                <input id="hunterName" name="name" required placeholder="f.eks. Nara" />
+              </label>
+              <label>Spiller / eier
+                <input id="hunterPlayer" name="player" placeholder="f.eks. Eirik" />
+              </label>
+              <label>Alder
+                <input id="hunterAge" name="age" type="number" min="12" max="70" value="24" />
+              </label>
+              <label>Rolle / arketype
+                <select id="hunterArchetype" name="archetype"></select>
+              </label>
+              <label>Portrettfil
+                <input id="hunterPortrait" name="portrait" placeholder="assets/portraits/jeger_01.png" />
+                <span class="hint">Legg egne portretter i <code>assets/portraits/</code>. Bruk PNG/JPG/WebP.</span>
+              </label>
+
+              <div class="miniGrid statsEditor" aria-label="Egenskaper 1 til 10">
+                <label>HEL <input id="statHel" type="number" min="1" max="10" value="5" /></label>
+                <label>STY <input id="statSty" type="number" min="1" max="10" value="5" /></label>
+                <label>OVÅ <input id="statOva" type="number" min="1" max="10" value="5" /></label>
+                <label>SMI <input id="statSmi" type="number" min="1" max="10" value="5" /></label>
+                <label>KLØ <input id="statKlo" type="number" min="1" max="10" value="5" /></label>
+              </div>
+
+              <label>Startutstyr
+                <textarea id="hunterEquipment" rows="3" placeholder="Kastespyd, flintkniv, lærreim"></textarea>
+              </label>
+              <label>Kort bakgrunn
+                <textarea id="hunterNote" rows="3" placeholder="Hva hvisker stammen om denne jegeren?"></textarea>
+              </label>
+              <div class="buttonRow">
+                <button class="primary" type="submit">Lagre jeger</button>
+                <button type="button" id="previewSheetBtn">Forhåndsvis ark</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="card">
+            <h3>Ferdigheter beregnes automatisk</h3>
+            <p class="muted">MVP-en bruker fem egenskaper og ti ferdigheter. Ferdighetene beregnes fra egenskapene, men kan senere gjøres manuelle.</p>
+            <div id="skillPreview" class="skillTable"></div>
+            <div class="infoBox">
+              <strong>Terningkjerne:</strong> 2D6 + ferdighet ≥ vanskelighetsgrad. Pust = HEL. Stats og skills går fra 1–10.
+            </div>
+          </article>
+        </div>
+
+        <article class="card full">
+          <h3>Lagrede jegere</h3>
+          <div id="hunterList" class="hunterList"></div>
+        </article>
+      </section>
+
+      <section id="view-hunt" class="view" aria-labelledby="huntTitle">
+        <div class="sectionHeader">
+          <div>
+            <p class="eyebrow">Etter jaktfasen</p>
+            <h2 id="huntTitle">Registrer jaktresultat</h2>
+          </div>
+          <span class="badge">Alt du registrerer kan bli historie</span>
+        </div>
+
+        <article class="card">
+          <form id="huntForm" class="formStack">
+            <div class="grid two">
+              <label>Scenario
+                <select id="huntScenario"></select>
+              </label>
+              <label>Resultat
+                <select id="huntOutcome">
+                  <option value="success">Vellykket jakt</option>
+                  <option value="costly">Vellykket, men dyrt kjøpt</option>
+                  <option value="failed">Mislykket jakt</option>
+                </select>
+              </label>
+            </div>
+
+            <label>Hvem deltok?
+              <div id="huntParticipants" class="checkboxGrid"></div>
+            </label>
+
+            <div class="grid three">
+              <label>Dyr felt
+                <input id="huntAnimals" type="number" min="0" value="1" />
+              </label>
+              <label>Dyr flyktet
+                <input id="huntFled" type="number" min="0" value="0" />
+              </label>
+              <label>Ressurser etterlatt
+                <input id="huntLeftBehind" type="number" min="0" value="0" />
+              </label>
+            </div>
+
+            <div>
+              <h3>Ressurser brakt hjem</h3>
+              <div id="huntResources" class="resourceInputs"></div>
+            </div>
+
+            <div>
+              <h3>Tilstand på deltakere</h3>
+              <p class="muted">Velg tilstanden jegeren kom hjem i. Appen bruker dette til skader, død og hendelser.</p>
+              <div id="participantStatus" class="statusList"></div>
+            </div>
+
+            <label>Notater fra bordet
+              <textarea id="huntNotes" rows="4" placeholder="Vindskift, dramatisk kast, rein som trampet ned en jeger, noe spillerne lo av..."></textarea>
+            </label>
+
+            <button class="primary" type="submit">Avslutt jakt og skap fortelling</button>
+          </form>
+        </article>
+
+        <article id="huntOutput" class="card storyPanel hidden"></article>
+      </section>
+
+      <section id="view-resources" class="view" aria-labelledby="resourcesTitle">
+        <div class="sectionHeader">
+          <div>
+            <p class="eyebrow">Stammefase</p>
+            <h2 id="resourcesTitle">Fordel ressurser</h2>
+          </div>
+          <button id="quickFoodBtn">Gi 2 kjøtt til stammen</button>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Lager nå</h3>
+            <div id="resourceInventory" class="resourceGrid large"></div>
+          </article>
+          <article class="card">
+            <h3>Manuell justering</h3>
+            <form id="manualResourceForm" class="formStack">
+              <label>Ressurs
+                <select id="manualResourceSelect"></select>
+              </label>
+              <label>Endring
+                <input id="manualResourceAmount" type="number" value="1" />
+              </label>
+              <label>Begrunnelse
+                <input id="manualResourceReason" placeholder="f.eks. funnet flint ved elva" />
+              </label>
+              <button type="submit">Lagre justering</button>
+            </form>
+          </article>
+        </div>
+        <article class="card full">
+          <h3>Stammehandlinger</h3>
+          <p class="muted">Dette er MVP-logikk. Handlingen bruker ressurser, endrer stammens verdier og legger en liten fortelling i loggen.</p>
+          <div id="allocationActions" class="actionGrid"></div>
+        </article>
+      </section>
+
+      <section id="view-milestones" class="view" aria-labelledby="milestonesTitle">
+        <div class="sectionHeader">
+          <div>
+            <p class="eyebrow">Kampanjeprogresjon</p>
+            <h2 id="milestonesTitle">Milepæler</h2>
+          </div>
+          <button id="recheckMilestonesBtn">Sjekk på nytt</button>
+        </div>
+        <article class="card full">
+          <div id="milestoneList" class="milestoneList"></div>
+        </article>
+      </section>
+
+      <section id="view-log" class="view" aria-labelledby="logTitle">
+        <div class="sectionHeader">
+          <div>
+            <p class="eyebrow">Stammens hukommelse</p>
+            <h2 id="logTitle">Fortellinger og hendelser</h2>
+          </div>
+          <button id="clearLogBtn">Tøm kun fortellingslogg</button>
+        </div>
+        <article class="card full">
+          <div id="storyLog" class="storyLog"></div>
+        </article>
+      </section>
+
+      <section id="view-backup" class="view" aria-labelledby="backupTitle">
+        <div class="sectionHeader">
+          <div>
+            <p class="eyebrow">GitHub-vennlig MVP</p>
+            <h2 id="backupTitle">Data, backup og test</h2>
+          </div>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Eksporter</h3>
+            <p class="muted">Lagringen ligger i nettleseren. Eksporter JSON hvis du vil ta vare på kampanjen eller flytte den.</p>
+            <button id="exportStateBtn" class="primary">Last ned kampanjedata</button>
+          </article>
+          <article class="card">
+            <h3>Importer</h3>
+            <input id="importStateInput" type="file" accept="application/json" />
+            <button id="importStateBtn">Importer valgt fil</button>
+          </article>
+        </div>
+        <article class="card dangerZone">
+          <h3>Nullstill testdata</h3>
+          <p>Dette sletter stamme, jegere, ressurser, milepæler og logg i nettleseren.</p>
+          <button id="resetAllBtn">Nullstill alt</button>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <section id="printArea" aria-hidden="true"></section>
+
+  <template id="eventChoiceTemplate">
+    <button class="eventChoice"></button>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

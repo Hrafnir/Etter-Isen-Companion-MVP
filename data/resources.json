@@ -1,0 +1,82 @@
+{
+  "resources": [
+    { "id": "kjott", "name": "Kjøtt", "icon": "🥩", "description": "Ferskt kjøtt. Må spises, tørkes eller brukes raskt." },
+    { "id": "torket_kjott", "name": "Tørket kjøtt", "icon": "🍖", "description": "Mer stabil mat for dårlige dager." },
+    { "id": "skinn", "name": "Skinn", "icon": "🟫", "description": "Klær, trekk, reimer og ly." },
+    { "id": "bein", "name": "Bein", "icon": "🦴", "description": "Nåler, kroker, småredskap og ritualobjekter." },
+    { "id": "sener", "name": "Sener", "icon": "🪢", "description": "Bindinger, buestreng, reparasjon og søm." },
+    { "id": "gevir", "name": "Gevir", "icon": "🦌", "description": "Redskap, symboler og åndegaver." },
+    { "id": "fett", "name": "Fett", "icon": "🕯️", "description": "Mat, varme, lys og behandling." },
+    { "id": "flint", "name": "Flint", "icon": "🔺", "description": "Skarpe eggverktøy og spydspisser." },
+    { "id": "treverk", "name": "Treverk", "icon": "🪵", "description": "Skaft, bål, reparasjoner og enkle bygg." },
+    { "id": "urter", "name": "Urter", "icon": "🌿", "description": "Sårstell, feber, røyk og luktmaskering." },
+    { "id": "andegaver", "name": "Åndegaver", "icon": "✦", "description": "Små symboler, funn og gaver brukt i ritualer." }
+  ],
+  "allocations": [
+    {
+      "id": "feed_clan",
+      "name": "Mat til ildstedet",
+      "summary": "Gi ferskt kjøtt til stammen før det mister verdi.",
+      "cost": { "kjott": 1 },
+      "effects": { "mat": 1 },
+      "bonusAt": 3,
+      "bonusEffects": { "samhold": 1 },
+      "story": "Kjøttet deles mens flammene slikker lavt langs steinen. Barna tygger stille først, så kommer lydene tilbake: små latterdrag, eldre stemmer, en hånd på en skulder. I kveld er sulten skjøvet litt lenger bort fra leiren."
+    },
+    {
+      "id": "dry_meat",
+      "name": "Tørk kjøtt",
+      "summary": "Gjør ferskt kjøtt om til tryggere matlager.",
+      "cost": { "kjott": 1 },
+      "produce": { "torket_kjott": 1 },
+      "effects": { "trygghet": 1 },
+      "story": "Tynne strimler henges der røyken går jevnt og varm. Lukten setter seg i hår, klær og stein. Det er ikke et måltid nå, men et løfte til den dagen vinden tar med seg snø."
+    },
+    {
+      "id": "make_clothes",
+      "name": "Sy varme klær",
+      "summary": "Bruk skinn og sener til varme, remmer og vern.",
+      "cost": { "skinn": 1, "sener": 1 },
+      "effects": { "trygghet": 2 },
+      "physicalCard": "Varmt skinn over skuldrene",
+      "story": "Nålene går gjennom skinnet i langsomme, sikre tak. En jeger får tørre skuldre, et barn får votter, og noen nikker mot nordavinden som om den endelig har møtt motstand."
+    },
+    {
+      "id": "repair_weapons",
+      "name": "Reparer våpen",
+      "summary": "Skift spisser, stram sener og gjør jaktlaget klart.",
+      "cost": { "flint": 1, "treverk": 1, "sener": 1 },
+      "effects": { "trygghet": 1, "kunnskap": 1 },
+      "physicalCard": "Nye spisser, gamle hender",
+      "story": "Flint slår mot stein. Gnister dør før de blir flamme, men hver skarp egg blir husket i hendene. Når våpnene legges tilbake ved sovestedene, ligger de litt rettere enn før."
+    },
+    {
+      "id": "treat_wounded",
+      "name": "Stell skadde",
+      "summary": "Bruk urter, fett og skinn til behandling og hvile.",
+      "cost": { "urter": 1, "fett": 1 },
+      "effects": { "samhold": 1, "trygghet": 1 },
+      "physicalCard": "Røyk over såret",
+      "story": "Urter knuses mellom fingre, fett varmes i en liten grop, og den skadde biter i en rem mens stammen later som de ikke hører det. Da bandasjen strammes, er smerten fortsatt der, men frykten er mindre."
+    },
+    {
+      "id": "ritual_fire",
+      "name": "Ritual ved bålet",
+      "summary": "Gi noe tilbake til det som bar jakten.",
+      "cost": { "gevir": 1, "fett": 1 },
+      "effects": { "andskraft": 2, "samhold": 1 },
+      "milestone": "first_ritual",
+      "physicalCard": "Ny sang ved bålet",
+      "story": "Geviret legges ved flammen. Fettet drypper og freser, og sangen begynner lavt hos én stemme før den finner flere. Ingen sier at dette gjør verden trygg. Likevel sover stammen roligere."
+    },
+    {
+      "id": "teach_young",
+      "name": "Lær de unge",
+      "summary": "Bruk tid, bein og sporfortellinger til å bygge kunnskap.",
+      "cost": { "bein": 1 },
+      "effects": { "kunnskap": 2, "samhold": 1 },
+      "physicalCard": "Barn lærer jakttegn",
+      "story": "Et bein blir tegnet med små hakk: vind, spor, flukt, venting. De unge gjentar tegnene med alvorlige ansikter. I morgen vil de fortsatt være barn, men i kveld bærer de én bit mer av stammens hukommelse."
+    }
+  ]
+}

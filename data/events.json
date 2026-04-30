@@ -1,0 +1,106 @@
+[
+  {
+    "id": "first_success",
+    "triggerKey": "first_success",
+    "title": "Første blod på snøfri jord",
+    "oneTime": true,
+    "physicalCard": "Første blod",
+    "story": "Da jaktlaget kom tilbake, var det ikke triumfen som først fylte leiren. Det var stillheten. Alle så kjøttet, skinnet og blodet på hendene. Så løftet en av de eldre en hånd mot himmelen, og først da slapp barna pusten. Stammen hadde felt sitt første store bytte etter isens tid.",
+    "choices": [
+      { "label": "Feir jakten", "text": "Dere lar latter og sang bære kvelden.", "effects": { "samhold": 1, "andskraft": 1 } },
+      { "label": "Spar alt til vinteren", "text": "Dere skjærer nøye og kaster ingenting.", "effects": { "trygghet": 1 }, "resourceEffects": { "torket_kjott": 1 } },
+      { "label": "Lær de unge om dyret", "text": "Spor, sener og lunger blir undervisning.", "effects": { "kunnskap": 2 } }
+    ]
+  },
+  {
+    "id": "first_failed",
+    "triggerKey": "first_failed",
+    "title": "Tomme hender i skumringen",
+    "oneTime": true,
+    "physicalCard": "Tomme hender",
+    "story": "De kom tilbake én etter én, uten kjøtt og uten blikk som ville møte leiren. Bak dem lukket mørket seg over sporene de hadde fulgt feil. Ingen ropte. Ingen skyldte på noen. Men ved ildstedet skjønte alle at magen kan være like høylytt som ulv.",
+    "choices": [
+      { "label": "Streng rasjonering", "text": "Alle får mindre, men alle får noe.", "effects": { "samhold": -1, "trygghet": 1 } },
+      { "label": "Sende ut sankere", "text": "De svakeste sporene blir fortsatt fulgt.", "effects": { "mat": 1, "fare": 1 } },
+      { "label": "Snakke gjennom feilen", "text": "Jakten blir gjenfortalt til den blir lærdom.", "effects": { "kunnskap": 1 } }
+    ]
+  },
+  {
+    "id": "hunter_dead",
+    "triggerKey": "hunter_dead",
+    "title": "Tom plass ved ildstedet",
+    "oneTime": false,
+    "physicalCard": "Sorg ved bålet",
+    "story": "En plass ble stående åpen ved bålet. Den som pleide å sitte der, kom ikke tilbake. Først ble våpnene lagt ned. Så ble stemmen til den døde fortalt av andre: et råd, en feil, en latter, en hånd som en gang dro noen opp av iskaldt vann. Tapet fikk form, og formen fikk navn.",
+    "choices": [
+      { "label": "Sørgeritual", "text": "Dere bruker tid og ressurser på å hedre den døde.", "cost": { "kjott": 1, "gevir": 1 }, "effects": { "samhold": 1, "andskraft": 1 } },
+      { "label": "Jaktens lærdom", "text": "Dere går gjennom hva som gikk galt.", "effects": { "kunnskap": 1, "samhold": -1 } },
+      { "label": "Taus sorg", "text": "Ingen har ord, men alle vet.", "effects": { "andskraft": -1 } }
+    ]
+  },
+  {
+    "id": "hunter_injured",
+    "triggerKey": "hunter_injured",
+    "title": "Blod under skinnet",
+    "oneTime": false,
+    "physicalCard": "Skadet jeger",
+    "story": "Såret var ikke stort nok til å ta et liv, men stort nok til å forandre gangen hjem. Rundt bålet så alle hvor smerten satt: i armen som ikke løftet seg, i foten som dro etter, i blikket som ble borte når noen nevnte neste jakt.",
+    "choices": [
+      { "label": "Stell med urter", "text": "Dere prioriterer behandling.", "cost": { "urter": 1, "fett": 1 }, "effects": { "trygghet": 1, "samhold": 1 } },
+      { "label": "La jegeren hvile", "text": "Stammen bærer litt mer for én av sine egne.", "effects": { "samhold": 1, "mat": -1 } },
+      { "label": "Tilbake i arbeid", "text": "Smerten skyves ned, men den forsvinner ikke.", "effects": { "fare": 1 } }
+    ]
+  },
+  {
+    "id": "good_catch",
+    "triggerKey": "good_catch",
+    "title": "Kjøtt nok til å snakke høyt",
+    "oneTime": false,
+    "physicalCard": "God fangst",
+    "story": "Denne gangen var børene tunge. Kjøtt, fett, skinn og bein kom inn i leiren som om landskapet selv hadde gitt etter. Folk snakket høyere enn de pleide. Noen lo for tidlig, før arbeidet var ferdig, men ingen kjeftet. Det finnes kvelder der håp lukter som røyk og ferskt slakt.",
+    "choices": [
+      { "label": "Bygg matlager", "text": "Dere tenker på dagene som kommer.", "effects": { "mat": 2, "trygghet": 1 } },
+      { "label": "Stor deling", "text": "Ingen skal gå sultne til søvn.", "effects": { "samhold": 2 } },
+      { "label": "Bytt med fremmede", "text": "Ryktet om fangsten kan nå lenger enn dere ønsker.", "effects": { "kunnskap": 1, "fare": 1 } }
+    ]
+  },
+  {
+    "id": "smell_of_butchery",
+    "triggerKey": "smell_slaughter",
+    "title": "Lukten av slakt",
+    "oneTime": false,
+    "physicalCard": "Ulver nær leiren",
+    "story": "Vinden bar mer enn røyk den natten. Den bar fett, blod og marg. Ute mellom steinene stanset noe, snuste og forsvant igjen. Om morgenen lå små spor i rimlaget utenfor leiren. Stammen hadde fått mat, men landskapet hadde også fått vite det.",
+    "choices": [
+      { "label": "Sette vakter", "text": "Noen sover mindre for at andre skal sove trygt.", "effects": { "trygghet": 1, "samhold": -1 } },
+      { "label": "Flytte avfall langt bort", "text": "Dere skjærer renere og bærer restene bort.", "effects": { "fare": -1 }, "cost": { "treverk": 1 } },
+      { "label": "La rovdyrene få sitt", "text": "Kanskje metter det dem. Kanskje lærer det dem veien.", "effects": { "andskraft": 1, "fare": 1 } }
+    ]
+  },
+  {
+    "id": "low_food",
+    "triggerKey": "low_food",
+    "title": "Sultne barn",
+    "oneTime": false,
+    "physicalCard": "Sulten stamme",
+    "story": "Det var ikke de voksne som gjorde stillheten verst. Det var barna. De sluttet å spørre etter mer og begynte å se på hendene til dem som fordelte maten. En stamme kan tåle kulde, mørke og frykt. Sulten er farligere, for den sitter ved siden av alle og hvisker rettferdighetens språk.",
+    "choices": [
+      { "label": "Mate barna først", "text": "De minste får styrke, de voksne bærer uro.", "effects": { "samhold": 1, "mat": -1 } },
+      { "label": "Mate jegerne først", "text": "Neste jakt må lykkes.", "effects": { "trygghet": -1, "fare": -1 } },
+      { "label": "Alle får likt", "text": "Ingen blir mette, men ingen blir oversett.", "effects": { "samhold": 1 } }
+    ]
+  },
+  {
+    "id": "wind_carried_scent",
+    "triggerKey": "wind_trouble",
+    "title": "Vinden bar lukten",
+    "oneTime": false,
+    "physicalCard": "Vinden husker dere",
+    "story": "Alle ved bordet så det samme: pilen på vindskiven flyttet seg, og med den flyttet også jakten seg. Reinen løftet hodet før noen hadde kastet. Den så ikke menneskene, men den visste at noe var galt. Slik lærer stammen at vind ikke er vær. Vind er en stemme.",
+    "choices": [
+      { "label": "Trene på vindtegn", "text": "De unge lærer røyk, gress og kinnets hud.", "effects": { "kunnskap": 1 } },
+      { "label": "Smøre bort lukt", "text": "Urter, jord og røyk blir del av jaktforberedelsen.", "cost": { "urter": 1 }, "effects": { "trygghet": 1 } },
+      { "label": "Akseptere tapet", "text": "Noen dager eier landskapet spillet.", "effects": { "andskraft": 1 } }
+    ]
+  }
+]

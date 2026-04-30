@@ -1,0 +1,34 @@
+[
+  {
+    "id": "stille",
+    "name": "Den stille",
+    "portrait": "assets/portraits/jeger_01.png",
+    "stats": { "hel": 5, "sty": 4, "ova": 6, "smi": 7, "klo": 5 },
+    "equipment": ["kastespyd", "flintkniv", "myk skinnkappe"],
+    "roleText": "kommer nær, driver forsiktig og kaster fra god posisjon"
+  },
+  {
+    "id": "sterke",
+    "name": "Den sterke",
+    "portrait": "assets/portraits/jeger_02.png",
+    "stats": { "hel": 6, "sty": 7, "ova": 4, "smi": 5, "klo": 4 },
+    "equipment": ["tungt spyd", "bærereim", "beinøks"],
+    "roleText": "står klar når dyret presses, holder unna og bærer tungt hjem"
+  },
+  {
+    "id": "sporleser",
+    "name": "Sporleseren",
+    "portrait": "assets/portraits/jeger_03.png",
+    "stats": { "hel": 5, "sty": 4, "ova": 7, "smi": 5, "klo": 6 },
+    "equipment": ["lett kastespyd", "sporstav", "flintskrape"],
+    "roleText": "leser flokken, finner spor og forutser bevegelse"
+  },
+  {
+    "id": "handverker",
+    "name": "Håndverkeren",
+    "portrait": "assets/portraits/jeger_04.png",
+    "stats": { "hel": 4, "sty": 5, "ova": 5, "smi": 6, "klo": 7 },
+    "equipment": ["flintkniv", "senerull", "reparasjonssett"],
+    "roleText": "sikrer høy gevinst etter at dyret er felt og holder utstyret levende"
+  }
+]
