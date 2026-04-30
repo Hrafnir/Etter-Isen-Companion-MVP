@@ -8,6 +8,28 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="introOverlay" class="introOverlay hidden" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+    <div class="introOverlay__panel">
+      <div class="introOverlay__top">
+        <div>
+          <p class="eyebrow">Åpningsfilm</p>
+          <h2 id="introTitle">Etter Isen</h2>
+        </div>
+        <button id="skipIntroBtn" class="small">Hopp over</button>
+      </div>
+      <video id="introVideo" class="introVideo" src="assets/video/intro.mp4" poster="assets/img/cover.jpg" preload="metadata" playsinline controls muted>
+        Nettleseren din støtter ikke videoavspilling.
+      </video>
+      <div class="introOverlay__bottom">
+        <p>Introen vises bare første gang på denne enheten. Du kan spille den av på nytt fra forsiden.</p>
+        <div class="buttonRow">
+          <button id="closeIntroBtn" class="primary">Gå til appen</button>
+          <button id="unmuteIntroBtn">Lyd av/på</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="appShell">
     <header class="hero">
       <div class="hero__imageWrap">
@@ -21,6 +43,7 @@
           <button class="primary" data-view="hunt">Registrer jakt</button>
           <button data-view="hunters">Lag jeger</button>
           <button data-view="backup">Eksporter lagring</button>
+          <button id="replayIntroBtn" type="button">Spill intro</button>
         </div>
       </div>
     </header>

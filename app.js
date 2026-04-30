@@ -2,6 +2,7 @@
    Static app for GitHub Pages. Data is stored in localStorage. */
 
 const STORAGE_KEY = "etterIsenCompanionMvp.v1";
+const INTRO_SEEN_KEY = "etterIsenIntroSeen.v1";
 
 const FALLBACK_ARCHETYPES = [
   { id: "stille", name: "Den stille", portrait: "assets/portraits/jeger_01.png", stats: { hel: 5, sty: 4, ova: 6, smi: 7, klo: 5 }, equipment: ["kastespyd", "flintkniv"], roleText: "kommer nær og kaster fra god posisjon" },
@@ -198,6 +199,7 @@ async function init() {
   populateStaticControls();
   renderAll();
   updateSkillPreview();
+  maybeShowIntro();
 }
 
 function ensureResourceKeys() {
@@ -226,7 +228,63 @@ function bindEvents() {
   $('#exportStateBtn').addEventListener('click', exportState);
   $('#importStateBtn').addEventListener('click', importState);
   $('#resetAllBtn').addEventListener('click', resetAll);
+
+  const replayIntroBtn = $('#replayIntroBtn');
+  if (replayIntroBtn) replayIntroBtn.addEventListener('click', () => showIntro({ remember: false, autoplay: true }));
+
+  const skipIntroBtn = $('#skipIntroBtn');
+  if (skipIntroBtn) skipIntroBtn.addEventListener('click', () => hideIntro(true));
+
+  const closeIntroBtn = $('#closeIntroBtn');
+  if (closeIntroBtn) closeIntroBtn.addEventListener('click', () => hideIntro(true));
+
+  const unmuteIntroBtn = $('#unmuteIntroBtn');
+  if (unmuteIntroBtn) unmuteIntroBtn.addEventListener('click', toggleIntroSound);
+
+  const introVideo = $('#introVideo');
+  if (introVideo) introVideo.addEventListener('ended', () => hideIntro(true));
 }
+
+function maybeShowIntro() {
+  if (localStorage.getItem(INTRO_SEEN_KEY) === 'true') return;
+  showIntro({ remember: true, autoplay: true });
+}
+
+function showIntro(options = {}) {
+  const overlay = $('#introOverlay');
+  const video = $('#introVideo');
+  if (!overlay || !video) return;
+  overlay.dataset.remember = options.remember ? 'true' : 'false';
+  overlay.classList.remove('hidden');
+  document.body.classList.add('intro-open');
+
+  video.currentTime = 0;
+  video.muted = true;
+  if (options.autoplay) {
+    const playAttempt = video.play();
+    if (playAttempt && typeof playAttempt.catch === 'function') playAttempt.catch(() => {});
+  }
+}
+
+function hideIntro(markAsSeen = true) {
+  const overlay = $('#introOverlay');
+  const video = $('#introVideo');
+  if (!overlay || !video) return;
+  video.pause();
+  overlay.classList.add('hidden');
+  document.body.classList.remove('intro-open');
+  if (markAsSeen) localStorage.setItem(INTRO_SEEN_KEY, 'true');
+}
+
+function toggleIntroSound() {
+  const video = $('#introVideo');
+  if (!video) return;
+  video.muted = !video.muted;
+  if (!video.paused) return;
+  const playAttempt = video.play();
+  if (playAttempt && typeof playAttempt.catch === 'function') playAttempt.catch(() => {});
+}
+
 
 function showView(viewName) {
   $$('.view').forEach(view => view.classList.remove('is-active'));
@@ -948,6 +1006,7 @@ function resetAll() {
   const answer = prompt('Skriv SLETT for å nullstille all lokal lagring.');
   if (answer !== 'SLETT') return;
   state = createDefaultState();
+  localStorage.removeItem(INTRO_SEEN_KEY);
   saveState();
   renderAll();
 }
